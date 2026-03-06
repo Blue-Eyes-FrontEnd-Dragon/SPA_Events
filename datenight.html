@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Night - Saturday 7th March 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #7c3aed;
+            --primary-dark: #5b21b6;
+            --accent: #f472b6;
+            --bg-dark: #1a1625;
+            --bg-card: #252033;
+            --bg-card-hover: #2d2640;
+            --text-primary: #f8f7ff;
+            --text-secondary: #a5a0b8;
+            --border: #3d3654;
+            --success: #34d399;
+            --warning: #fbbf24;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 3rem 0;
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #2d1f4e 100%);
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 2rem;
+        }
+
+        .header-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.75rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+
+        .date-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1.25rem;
+            border-radius: 2rem;
+            font-weight: 500;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        /* Weather Banner */
+        .weather-banner {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2d4a6f 100%);
+            border-radius: 1rem;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            border: 1px solid #3d5a7f;
+        }
+
+        .weather-icon {
+            font-size: 2.5rem;
+        }
+
+        .weather-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .weather-info p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .weather-temps {
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .weather-temps .high {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .weather-temps .low {
+            color: var(--text-secondary);
+        }
+
+        /* Section Headers */
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.75rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+        }
+
+        /* Activities Table */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 1rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            margin-bottom: 3rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+        }
+
+        th {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        td {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover {
+            background: var(--bg-card-hover);
+        }
+
+        .activity-name {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        .activity-name a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .activity-name a:hover {
+            color: var(--accent);
+        }
+
+        .location {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .drive-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: var(--bg-dark);
+            padding: 0.35rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+        }
+
+        .cost {
+            font-weight: 500;
+            color: var(--success);
+        }
+
+        .cost.free {
+            color: var(--success);
+        }
+
+        .time-slot {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.35rem 0.75rem;
+            border-radius: 0.5rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .weather-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        /* Activity Cards */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .activity-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .activity-card:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .card-title a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .card-title a:hover {
+            color: var(--accent);
+        }
+
+        .card-price {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            color: white;
+            padding: 0.35rem 0.85rem;
+            border-radius: 1rem;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .card-details {
+            list-style: none;
+        }
+
+        .card-details li {
+            padding: 0.5rem 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .card-details li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Category Labels */
+        .category-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            padding: 0.25rem 0.6rem;
+            border-radius: 0.25rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .category-budget {
+            background: #064e3b;
+            color: #34d399;
+        }
+
+        .category-mid {
+            background: #4c1d95;
+            color: #c4b5fd;
+        }
+
+        .category-active {
+            background: #7c2d12;
+            color: #fdba74;
+        }
+
+        /* Itineraries */
+        .itineraries {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .itinerary {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .itinerary::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+        }
+
+        .itinerary h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .itinerary-steps {
+            list-style: none;
+            counter-reset: step;
+        }
+
+        .itinerary-steps li {
+            padding: 0.75rem 0;
+            padding-left: 2.5rem;
+            position: relative;
+            color: var(--text-secondary);
+            border-left: 2px solid var(--border);
+            margin-left: 0.75rem;
+        }
+
+        .itinerary-steps li::before {
+            counter-increment: step;
+            content: counter(step);
+            position: absolute;
+            left: -0.85rem;
+            width: 1.5rem;
+            height: 1.5rem;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .itinerary-steps li:last-child {
+            border-left-color: transparent;
+        }
+
+        .itinerary-steps a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .itinerary-steps a:hover {
+            color: var(--accent);
+        }
+
+        .step-price {
+            color: var(--success);
+            font-size: 0.85rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            border-top: 1px solid var(--border);
+            margin-top: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .weather-banner {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .weather-temps {
+                margin-left: 0;
+                text-align: center;
+            }
+
+            th, td {
+                padding: 0.75rem;
+            }
+
+            .activities-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-icon">&#128149;</div>
+        <h1>Date Night Activities</h1>
+        <p class="subtitle">Droylsden, Manchester UK</p>
+        <span class="date-badge">Saturday 7th March 2026</span>
+    </header>
+
+    <div class="container">
+        <!-- Weather Banner -->
+        <div class="weather-banner">
+            <span class="weather-icon">&#127783;&#65039;</span>
+            <div class="weather-info">
+                <h3>Weather Forecast</h3>
+                <p>Overcast with likely rain showers &mdash; perfect for indoor activities!</p>
+            </div>
+            <div class="weather-temps">
+                <div class="high">9-11&deg;C</div>
+                <div class="low">Low: 3-7&deg;C</div>
+            </div>
+        </div>
+
+        <!-- Main Activities Table -->
+        <h2>Indoor Activities</h2>
+        <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">All venues within 1 hour drive of Droylsden</p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Activity</th>
+                        <th>Location</th>
+                        <th>Drive</th>
+                        <th>Cost (pp)</th>
+                        <th>Suggested Time</th>
+                        <th>Weather</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="activity-name"><a href="https://nq64.co.uk/manchester-northern-quarter/" target="_blank">NQ64 Arcade Bar</a></div>
+                        </td>
+                        <td class="location">Northern Quarter, Manchester</td>
+                        <td><span class="drive-time">&#128663; 15 mins</span></td>
+                        <td class="cost">Free entry + &pound;9.50-&pound;13 tokens</td>
+                        <td><span class="time-slot">Evening 6pm+</span></td>
+                        <td class="weather-cell">&#127783;&#65039; Rain, 7&deg;C</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="activity-name"><a href="https://manchesterartgallery.org/" target="_blank">Manchester Art Gallery</a></div>
+                        </td>
+                        <td class="location">Mosley Street, Manchester</td>
+                        <td><span class="drive-time">&#128663; 15 mins</span></td>
+                        <td class="cost free">Free</td>
+                        <td><span class="time-slot">Afternoon 12-4pm</span></td>
+                        <td class="weather-cell">&#9729;&#65039; Overcast, 9&deg;C</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="activity-name"><a href="https://thelowry.com/" target="_blank">The Lowry Gallery</a></div>
+                        </td>
+                        <td class="location">Salford Quays</td>
+                        <td><span class="drive-time">&#128663; 20 mins</span></td>
+                        <td class="cost free">Free</td>
+                        <td><span class="time-slot">Afternoon 1-5pm</span></td>
+                        <td class="weather-cell">&#9729;&#65039; Cloudy, 9&deg;C</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="activity-name"><a href="https://electricshuffle.com/uk/manchester" target="_blank">Electric Shuffle</a></div>
+                        </td>
+                        <td class="location">Deansgate, Manchester</td>
+                        <td><span class="drive-time">&#128663; 15 mins</span></td>
+                        <td class="cost">&pound;30 (brunch package)</td>
+                        <td><span class="time-slot">Brunch 11am-2pm</span></td>
+                        <td class="weather-cell">&#9729;&#65039; Overcast, 8&deg;C</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="activity-name"><a href="https://breakoutmanchester.com/" target="_blank">Escape Room (Breakout)</a></div>
+                        </td>
+                        <td class="location">City Centre, Manchester</td>
+                        <td><span class="drive-time">&#128663; 15 mins</span></td>
+                        <td class="cost">~&pound;22</td>
+                        <td><span class="time-slot">Afternoon 2-4pm</span></td>
+                        <td class="weather-cell">&#127783;&#65039; Rain, 9&deg;C</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="activity-name"><a href="https://thesnowcentre.com/manchester/" target="_blank">The Snow Centre</a></div>
+                        </td>
+                        <td class="location">Trafford Park</td>
+                        <td><span class="drive-time">&#128663; 20 mins</span></td>
+                        <td class="cost">&pound;28 (1hr lift pass)</td>
+                        <td><span class="time-slot">Morning 10am-12pm</span></td>
+                        <td class="weather-cell">&#127783;&#65039; Light rain, 7&deg;C</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="activity-name"><a href="https://lane7.com/venue/manchester-deansgate/" target="_blank">Bowling (Lane7)</a></div>
+                        </td>
+                        <td class="location">Deansgate, Manchester</td>
+                        <td><span class="drive-time">&#128663; 15 mins</span></td>
+                        <td class="cost">From &pound;10.50</td>
+                        <td><span class="time-slot">Evening 7-10pm</span></td>
+                        <td class="weather-cell">&#127783;&#65039; Rain, 6&deg;C</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="activity-name"><a href="https://stockportplaza.co.uk/" target="_blank">Stockport Plaza Cinema</a></div>
+                        </td>
+                        <td class="location">Stockport Town Centre</td>
+                        <td><span class="drive-time">&#128663; 15 mins</span></td>
+                        <td class="cost">~&pound;10-15</td>
+                        <td><span class="time-slot">Evening 5-8pm</span></td>
+                        <td class="weather-cell">&#9729;&#65039; Overcast, 7&deg;C</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="activity-name"><a href="https://www.brooklynpottery.co.uk/" target="_blank">Brooklyn Pottery</a></div>
+                        </td>
+                        <td class="location">Shaw Heath, Stockport</td>
+                        <td><span class="drive-time">&#128663; 10 mins</span></td>
+                        <td class="cost">&pound;29-&pound;45</td>
+                        <td><span class="time-slot">Afternoon 1-3pm</span></td>
+                        <td class="weather-cell">&#9729;&#65039; Cloudy, 9&deg;C</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="activity-name"><a href="https://www.hollywoodbowl.co.uk/manchester" target="_blank">Hollywood Bowl</a></div>
+                        </td>
+                        <td class="location">Ashton-under-Lyne</td>
+                        <td><span class="drive-time">&#128663; 10 mins</span></td>
+                        <td class="cost">From &pound;9.50</td>
+                        <td><span class="time-slot">Afternoon 3-5pm</span></td>
+                        <td class="weather-cell">&#9729;&#65039; Overcast, 8&deg;C</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Activity Details -->
+        <h2>Activity Details</h2>
+        <div class="activities-grid">
+            <!-- Budget Options -->
+            <div class="activity-card">
+                <span class="category-label category-budget">Budget-Friendly</span>
+                <div class="card-header">
+                    <div class="card-title"><a href="https://manchesterartgallery.org/" target="_blank">Manchester Art Gallery</a></div>
+                    <span class="card-price">Free</span>
+                </div>
+                <ul class="card-details">
+                    <li>Over 25,000 objects including Pre-Raphaelite masterpieces</li>
+                    <li>Open: Tue-Sun, 10am-5pm (last entry 4:30pm)</li>
+                    <li>Nearest Metrolink: St Peter's Square</li>
+                </ul>
+            </div>
+
+            <div class="activity-card">
+                <span class="category-label category-budget">Budget-Friendly</span>
+                <div class="card-header">
+                    <div class="card-title"><a href="https://thelowry.com/" target="_blank">The Lowry Gallery</a></div>
+                    <span class="card-price">Free</span>
+                </div>
+                <ul class="card-details">
+                    <li>Features L.S. Lowry paintings and contemporary exhibitions</li>
+                    <li>Free gallery admission; theatre shows &pound;12-&pound;38</li>
+                    <li>Located at Salford Quays waterfront</li>
+                </ul>
+            </div>
+
+            <div class="activity-card">
+                <span class="category-label category-budget">Budget-Friendly</span>
+                <div class="card-header">
+                    <div class="card-title"><a href="https://nq64.co.uk/manchester-northern-quarter/" target="_blank">NQ64 Arcade Bar</a></div>
+                    <span class="card-price">&pound;10-15</span>
+                </div>
+                <ul class="card-details">
+                    <li>Retro gaming with 40+ arcade machines and pinball</li>
+                    <li>Tokens: &pound;9.50 for 15 or &pound;13 for 25</li>
+                    <li>Consoles are free to play; 18+ only</li>
+                </ul>
+            </div>
+
+            <!-- Mid-Range Options -->
+            <div class="activity-card">
+                <span class="category-label category-mid">Mid-Range</span>
+                <div class="card-header">
+                    <div class="card-title"><a href="https://electricshuffle.com/uk/manchester" target="_blank">Electric Shuffle</a></div>
+                    <span class="card-price">&pound;30pp</span>
+                </div>
+                <ul class="card-details">
+                    <li>Shuffleboard with cocktails and pizza</li>
+                    <li>Bottomless brunch includes 2hrs pizza, prosecco, 1hr shuffleboard</li>
+                    <li>Open until 1am on Saturdays</li>
+                </ul>
+            </div>
+
+            <div class="activity-card">
+                <span class="category-label category-mid">Mid-Range</span>
+                <div class="card-header">
+                    <div class="card-title"><a href="https://breakoutmanchester.com/" target="_blank">Breakout Manchester</a></div>
+                    <span class="card-price">~&pound;22pp</span>
+                </div>
+                <ul class="card-details">
+                    <li>60-minute puzzle challenges</li>
+                    <li>Themes: murder mystery, bank heist, prison escape</li>
+                    <li>Book in advance recommended</li>
+                </ul>
+            </div>
+
+            <div class="activity-card">
+                <span class="category-label category-mid">Mid-Range</span>
+                <div class="card-header">
+                    <div class="card-title"><a href="https://www.brooklynpottery.co.uk/" target="_blank">Brooklyn Pottery</a></div>
+                    <span class="card-price">&pound;29-45pp</span>
+                </div>
+                <ul class="card-details">
+                    <li>Relaxed creative session decorating ceramics</li>
+                    <li>Cosy atmosphere with refreshments available</li>
+                    <li>No experience needed</li>
+                </ul>
+            </div>
+
+            <!-- Active Options -->
+            <div class="activity-card">
+                <span class="category-label category-active">Active</span>
+                <div class="card-header">
+                    <div class="card-title"><a href="https://thesnowcentre.com/manchester/" target="_blank">The Snow Centre</a></div>
+                    <span class="card-price">&pound;28-33pp</span>
+                </div>
+                <ul class="card-details">
+                    <li>UK's longest indoor snow slope</li>
+                    <li>1hr: &pound;28pp, 2hr: &pound;33pp (includes equipment)</li>
+                    <li>Beginner-friendly with lessons available</li>
+                </ul>
+            </div>
+
+            <div class="activity-card">
+                <span class="category-label category-active">Active</span>
+                <div class="card-header">
+                    <div class="card-title"><a href="https://lane7.com/venue/manchester-deansgate/" target="_blank">Lane7 Bowling</a></div>
+                    <span class="card-price">&pound;10.50pp</span>
+                </div>
+                <ul class="card-details">
+                    <li>Bowling with games bar atmosphere</li>
+                    <li>Karaoke, ping pong, and arcade games also available</li>
+                    <li>Located on Deansgate</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Recommended Itineraries -->
+        <h2>Recommended Itineraries</h2>
+        <div class="itineraries">
+            <div class="itinerary">
+                <h3>&#127912; Relaxed &amp; Cultural</h3>
+                <ol class="itinerary-steps">
+                    <li>Lunch at <a href="https://mackiemayor.co.uk/" target="_blank">Mackie Mayor</a> food hall <span class="step-price">(12pm)</span></li>
+                    <li><a href="https://manchesterartgallery.org/" target="_blank">Manchester Art Gallery</a> <span class="step-price">Free (1:30-3:30pm)</span></li>
+                    <li><a href="https://nq64.co.uk/manchester-northern-quarter/" target="_blank">NQ64 Arcade Bar</a> evening <span class="step-price">(6pm onwards)</span></li>
+                </ol>
+            </div>
+
+            <div class="itinerary">
+                <h3>&#9975;&#65039; Active &amp; Fun</h3>
+                <ol class="itinerary-steps">
+                    <li><a href="https://thesnowcentre.com/manchester/" target="_blank">The Snow Centre</a> skiing <span class="step-price">&pound;33pp (10am-12pm)</span></li>
+                    <li>Lunch at <a href="https://traffordcentre.co.uk/" target="_blank">Trafford Centre</a></li>
+                    <li><a href="https://electricshuffle.com/uk/manchester" target="_blank">Electric Shuffle</a> evening <span class="step-price">From &pound;30pp (6pm)</span></li>
+                </ol>
+            </div>
+
+            <div class="itinerary">
+                <h3>&#128176; Budget-Friendly</h3>
+                <ol class="itinerary-steps">
+                    <li><a href="https://thelowry.com/" target="_blank">The Lowry Gallery</a> <span class="step-price">Free (11am-2pm)</span></li>
+                    <li>Salford Quays lunch</li>
+                    <li><a href="https://www.hollywoodbowl.co.uk/manchester" target="_blank">Hollywood Bowl</a> <span class="step-price">From &pound;9.50pp (4pm)</span></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>All drive times approximate from Droylsden. Prices correct as of research date &mdash; recommend confirming before booking.</p>
+        <p style="margin-top: 0.5rem;">&#128149; Have a wonderful date night! &#128149;</p>
+    </footer>
+</body>
+</html>
